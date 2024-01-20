@@ -10,7 +10,7 @@ fn main() -> Result<()> {
     println!("Hello, world!");
     let task = Task {
         done: true,
-        ..Task::default()
+        ..Task::new("cool task")
     };
     println!("{task:#?}");
     Ok(())
