@@ -8,8 +8,8 @@ mod prelude;
 
 fn main() -> Result<()> {
     let req_builder = RequestBuilder::new()
-        .url("https://some-url.com/task/123")
-        .method("GET");
+        .url("https://some-url.com/task/123");
+        // .method("GET");
 
     let req = req_builder.header("token", "user_uuid.exp.sign").build();
 
