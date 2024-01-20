@@ -7,16 +7,16 @@ mod error;
 mod prelude;
 
 fn main() -> Result<()> {
-    let mut req_builder = RequestBuilder::new();
-    req_builder
+    let req_builder = RequestBuilder::new()
         .url("https://some-url.com/task/123")
         .method("GET");
 
-    let req = req_builder.header("token", "user_uuid.exp.sign").build();
+    let req_builder = req_builder.header("token", "user_uuid.exp.sign");
+
+    let req = req_builder.clone().build();
     println!("{req:#?}");
 
-    req_builder.header("Client-Version", "1.2");
-    let req = req_builder.build();
+    let req = req_builder.header("Client-Version", "1.2").build();
 
     println!("{req:#?}");
     Ok(())
