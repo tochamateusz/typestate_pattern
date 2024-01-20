@@ -1,4 +1,4 @@
-use crate::prelude::Result;
+use crate::prelude::{Error, Result};
 
 #[derive(Debug)]
 pub struct Request {
@@ -42,7 +42,22 @@ impl RequestBuilder {
     }
 
     pub fn build(&self) -> Result<Request> {
-        todo!()
+        let Some(url) = self.url.as_ref() else {
+            let request = Err(Error::Static("No url"));
+            return request;
+        };
+        let method = self
+            .method
+            .as_ref()
+            .cloned()
+            .unwrap_or_else(|| "GET".to_string());
+
+        Ok(Request {
+            url: url.to_string(),
+            method,
+            headers: self.headers.clone(),
+            body: self.body.clone(),
+        })
     }
 }
 
