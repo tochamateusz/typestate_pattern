@@ -8,8 +8,10 @@ mod prelude;
 
 fn main() -> Result<()> {
     println!("Hello, world!");
-    let task: Option<Task> = None;
-    let task = task.unwrap_or_default();
+    let task = Task {
+        done: true,
+        ..Task::default()
+    };
     println!("{task:#?}");
     Ok(())
 }
