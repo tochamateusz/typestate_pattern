@@ -11,13 +11,9 @@ fn main() -> Result<()> {
         .url("https://some-url.com/task/123")
         .method("GET");
 
-    let req_builder = req_builder.header("token", "user_uuid.exp.sign");
-
-    let req = req_builder.clone().build();
-    println!("{req:#?}");
-
-    let req = req_builder.header("Client-Version", "1.2").build();
+    let req = req_builder.header("token", "user_uuid.exp.sign").build();
 
     println!("{req:#?}");
+
     Ok(())
 }
