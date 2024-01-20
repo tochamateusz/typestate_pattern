@@ -13,6 +13,7 @@ fn main() -> Result<()> {
         .method("GET");
 
     let req = req_builder.header("token", "user_uuid.exp.sign").build();
+    println!("{req:#?}");
 
     req_builder.header("Client-Version", "1.2");
     let req = req_builder.build();
