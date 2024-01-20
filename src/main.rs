@@ -8,11 +8,7 @@ mod prelude;
 
 fn main() -> Result<()> {
     println!("Hello, world!");
-    let task = Task {
-        title: "Title".to_string(),
-        done: false,
-        desc: None,
-    };
+    let task = Task::default();
     println!("{task:#?}");
     Ok(())
 }
